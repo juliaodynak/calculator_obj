@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+//#import <Foundation/Foundation.h>
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+
+//        NSLog(@"Programming is fun!");
     }
+    return 0;
 }

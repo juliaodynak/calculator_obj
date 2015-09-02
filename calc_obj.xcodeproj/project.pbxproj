@@ -15,6 +15,7 @@
 		2519F5801B8DAA7F0013FDCA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2519F57F1B8DAA7F0013FDCA /* Images.xcassets */; };
 		2519F5831B8DAA7F0013FDCA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2519F5811B8DAA7F0013FDCA /* LaunchScreen.xib */; };
 		2519F58F1B8DAA7F0013FDCA /* calc_objTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2519F58E1B8DAA7F0013FDCA /* calc_objTests.m */; };
+		2519F5D21B8DFC3A0013FDCA /* Calc_brain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2519F5D11B8DFC3A0013FDCA /* Calc_brain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		2519F5881B8DAA7F0013FDCA /* calc_objTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calc_objTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2519F58D1B8DAA7F0013FDCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2519F58E1B8DAA7F0013FDCA /* calc_objTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calc_objTests.m; sourceTree = "<group>"; };
+		2519F5D11B8DFC3A0013FDCA /* Calc_brain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calc_brain.m; sourceTree = "<group>"; };
+		2519F5D31B8DFC540013FDCA /* Calc_brain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calc_brain.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +91,11 @@
 				2519F5791B8DAA7F0013FDCA /* ViewController.h */,
 				2519F57A1B8DAA7F0013FDCA /* ViewController.m */,
 				2519F57C1B8DAA7F0013FDCA /* Main.storyboard */,
-				2519F57F1B8DAA7F0013FDCA /* Images.xcassets */,
 				2519F5811B8DAA7F0013FDCA /* LaunchScreen.xib */,
 				2519F5761B8DAA7F0013FDCA /* calc_obj.xcdatamodeld */,
+				2519F5D11B8DFC3A0013FDCA /* Calc_brain.m */,
+				2519F5D31B8DFC540013FDCA /* Calc_brain.h */,
+				2519F5711B8DAA7F0013FDCA /* main.m */,
 				2519F56F1B8DAA7F0013FDCA /* Supporting Files */,
 			);
 			path = calc_obj;
@@ -99,8 +104,8 @@
 		2519F56F1B8DAA7F0013FDCA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2519F57F1B8DAA7F0013FDCA /* Images.xcassets */,
 				2519F5701B8DAA7F0013FDCA /* Info.plist */,
-				2519F5711B8DAA7F0013FDCA /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2519F5751B8DAA7F0013FDCA /* AppDelegate.m in Sources */,
+				2519F5D21B8DFC3A0013FDCA /* Calc_brain.m in Sources */,
 				2519F5781B8DAA7F0013FDCA /* calc_obj.xcdatamodeld in Sources */,
 				2519F57B1B8DAA7F0013FDCA /* ViewController.m in Sources */,
 				2519F5721B8DAA7F0013FDCA /* main.m in Sources */,
@@ -418,6 +424,7 @@
 				2519F5941B8DAA7F0013FDCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2519F5951B8DAA7F0013FDCA /* Build configuration list for PBXNativeTarget "calc_objTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				2519F5971B8DAA7F0013FDCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
