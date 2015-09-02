@@ -144,6 +144,7 @@
     digitOp.codeOperation = 0;
     _bufString = @"";
     _currentString = @"";
+    //hpu8ip[ij[
 }
 
 - (IBAction)operateUn:(id)sender
