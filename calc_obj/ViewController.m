@@ -166,6 +166,7 @@
     operation = [NSString stringWithFormat: @"%ld", (long)[sender tag]];
     operInt = [operation integerValue];
     codeOp = [digitOp unaryOperation:operInt];
+    operation = [NSString stringWithFormat:@"%f", codeOp];
 
     res = operation.length;
     while (res>uno) {
