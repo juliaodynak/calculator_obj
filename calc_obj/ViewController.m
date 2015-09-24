@@ -18,10 +18,10 @@
 @implementation ViewController
 
 @synthesize display;
-@synthesize bufString = _bufString;
-@synthesize currentString = _currentString;
-@synthesize isEqallPut = _isEqallPut;
-@synthesize saveCodeOp = _saveCodeOp;
+@synthesize bufString;
+@synthesize currentString;
+@synthesize isEqallPut;
+@synthesize saveCodeOp;
 
 - (void)viewDidLoad
 {
@@ -37,16 +37,16 @@
 {
     Calc_brain *digitOp = [Calc_brain SharedInstance];
     
-    if ([_currentString  isEqual: @"0"])
+    if ([self.currentString  isEqual: @"0"])
     {
-      _currentString=@"";  
+      self.currentString=@"";
     }
-    _isEqallPut = 0;
-    _bufString = [NSString stringWithFormat: @"%ld", (long)[sender tag]] ;
-    _currentString = [_currentString stringByAppendingString: _bufString];
-    display.text = _currentString;
+    self.isEqallPut = 0;
+    self.bufString = [NSString stringWithFormat: @"%ld", (long)[sender tag]] ;
+    self.currentString = [self.currentString stringByAppendingString: self.bufString];
+    self.display.text = self.currentString;
    
-    [digitOp putOperator1:_currentString];
+    [digitOp putOperator1:self.currentString];
 }
 
 - (IBAction)putDot:(id)sender
@@ -55,17 +55,17 @@
     NSRange mayBeDot;
     NSString *dt = @".";
     
-    mayBeDot = [_currentString rangeOfString: dt];
-    if (_currentString.length == 0)
+    mayBeDot = [self.currentString rangeOfString: dt];
+    if (self.currentString.length == 0)
     {
-        _currentString = @"0";
+        self.currentString = @"0";
     }
     
     if (mayBeDot.length == 0 )
     {
-        _currentString = [_currentString stringByAppendingString: @"."];
-        display.text = _currentString;
-        [digitOp putOperator1: _currentString];
+        self.currentString = [self.currentString stringByAppendingString: @"."];
+        self.display.text = self.currentString;
+        [digitOp putOperator1: self.currentString];
     }
 }
 
@@ -73,14 +73,23 @@
 {
     static NSString *operation =@"";
     NSInteger operInt;
+    NSInteger nullo = 0;
     Calc_brain *digitOp = [Calc_brain SharedInstance];
     
     operation = [NSString stringWithFormat: @"%ld", (long)[sender tag]];
     operInt = [operation integerValue];
-    digitOp.codeOperation = operInt;
+    if (digitOp.codeOperation != nullo)
+    {
+        [self equal:digitOp];
+        digitOp.codeOperation = operInt;
+    }
+    else
+    {
+        digitOp.codeOperation = operInt;
+    }
     
-    _bufString = @"";
-    _currentString = @"";
+    self.bufString = @"";
+    self.currentString = @"";
 }
 
 - (IBAction)equal:(id)sender
@@ -90,13 +99,13 @@
     Calc_brain *digitOp = [Calc_brain SharedInstance];
     NSUInteger res, uno = 1;
     
-    if ([_currentString  isEqual: @""] && _isEqallPut != 0)
+    if ([self.currentString  isEqual: @""] && self.isEqallPut != 0)
     {
-        _currentString = display.text;
-        [digitOp putOperator1:_currentString];
+        self.currentString = display.text;
+        [digitOp putOperator1:self.currentString];
     }
     
-    switch (_isEqallPut) {
+    switch (self.isEqallPut) {
         case 0:
             tt=[digitOp binaryOperation:digitOp.codeOperation];
             operation = [NSString stringWithFormat: @"%f",  tt];
@@ -113,16 +122,16 @@
                 }
                 res = res - 1;
             }
-            display.text = [NSString stringWithFormat: @"%@",operation];
-            _saveCodeOp = digitOp.codeOperation;
-            _isEqallPut = 1;
+            self.display.text = [NSString stringWithFormat: @"%@",operation];
+            self.saveCodeOp = digitOp.codeOperation;
+            self.isEqallPut = 1;
             break;
         case 1:
             if (digitOp.codeOperation != 0)
             {
-                _saveCodeOp = digitOp.codeOperation;
+                self.saveCodeOp = digitOp.codeOperation;
             }
-            tt=[digitOp binaryOperation:_saveCodeOp];
+            tt=[digitOp binaryOperation:self.saveCodeOp];
             operation = [NSString stringWithFormat: @"%f",  tt];
             res = operation.length;
             while (res>uno) {
@@ -142,9 +151,8 @@
     }
 
     digitOp.codeOperation = 0;
-    _bufString = @"";
-    _currentString = @"";
-    //hpu8ip[ij[
+    self.bufString = @"";
+    self.currentString = @"";
 }
 
 - (IBAction)operateUn:(id)sender
@@ -173,9 +181,9 @@
         res = res - 1;
     }
     
-    display.text = [NSString stringWithFormat: @"%@",operation];
-    _bufString = @"";
-    _currentString = @"";
+    self.display.text = [NSString stringWithFormat: @"%@",operation];
+    self.bufString = @"";
+    self.currentString = @"";
 
 }
 
@@ -183,24 +191,24 @@
 {
     Calc_brain *digitOp = [Calc_brain SharedInstance];
     
-    if (_currentString.length == 1)
+    if (self.currentString.length == 1)
     {
-        _currentString = @"0";
-        display.text = _currentString;
-        [digitOp putOperator1: _currentString];
+        self.currentString = @"0";
+        self.display.text = self.currentString;
+        [digitOp putOperator1: self.currentString];
     }
     
-    if (_currentString.length > 1 || [_currentString isEqual:@""])
+    if (self.currentString.length > 1 || [self.currentString isEqual:@""])
     {
-        if ([_currentString isEqual:@""])
+        if ([self.currentString isEqual:@""])
         {
-            _currentString = display.text;
+            self.currentString = self.display.text;
         }
         
-        NSString * backSpaceString = [_currentString substringToIndex: _currentString.length-1];
-        _currentString = backSpaceString;
-        display.text = _currentString;
-        [digitOp putOperator1: _currentString];
+        NSString * backSpaceString = [self.currentString substringToIndex: self.currentString.length-1];
+        self.currentString = backSpaceString;
+        self.display.text = self.currentString;
+        [digitOp putOperator1: self.currentString];
         
     }
     
@@ -212,11 +220,11 @@
 {
     Calc_brain *digitOp = [Calc_brain SharedInstance];
     
-    _bufString = @"";
-    _currentString = @"";
-    display.text = @"0";
+    self.bufString = @"";
+    self.currentString = @"";
+    self.display.text = @"0";
     digitOp.codeOperation = 0;
-    _isEqallPut = 0;
+    self.isEqallPut = 0;
 }
 
 @end
