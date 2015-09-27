@@ -110,17 +110,29 @@
             tt=[digitOp binaryOperation:digitOp.codeOperation];
             operation = [NSString stringWithFormat: @"%f",  tt];
             res = operation.length;
-            while (res>uno) {
+            while (res>uno)
+            {
                 elem = [operation substringWithRange:NSMakeRange(res-1,1)];
-                if ([elem isEqualToString:@"0"] || [elem isEqualToString:@"."])
+                NSRange mayBeDot;
+                NSString *dt = @".";
+                mayBeDot = [operation rangeOfString: dt];
+                if (mayBeDot.length != 0)
                 {
-                    operation = [operation substringToIndex:res-1];
+                    if ([elem isEqualToString:@"0"] || [elem isEqualToString:@"."])
+                    {
+                        operation = [operation substringToIndex:res-1];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    res = res - 1;
                 }
                 else
                 {
                     break;
                 }
-                res = res - 1;
+                
             }
             self.display.text = [NSString stringWithFormat: @"%@",operation];
             self.saveCodeOp = digitOp.codeOperation;
@@ -134,17 +146,28 @@
             tt=[digitOp binaryOperation:self.saveCodeOp];
             operation = [NSString stringWithFormat: @"%f",  tt];
             res = operation.length;
-            while (res>uno) {
+            while (res>uno)
+            {
                 elem = [operation substringWithRange:NSMakeRange(res-1,1)];
-                if ([elem isEqualToString:@"0"] || [elem isEqualToString:@"."])
+                NSRange mayBeDot;
+                NSString *dt = @".";
+                mayBeDot = [operation rangeOfString: dt];
+                if (mayBeDot.length != 0)
                 {
-                    operation = [operation substringToIndex:res-1];
+                    if ([elem isEqualToString:@"0"] || [elem isEqualToString:@"."])
+                    {
+                        operation = [operation substringToIndex:res-1];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    res = res - 1;
                 }
                 else
                 {
                     break;
                 }
-                res = res - 1;
             }
             display.text = [NSString stringWithFormat: @"%@",operation];
             break;
